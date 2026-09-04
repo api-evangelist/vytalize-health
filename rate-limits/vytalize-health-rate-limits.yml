@@ -1,0 +1,19 @@
+generated: '2026-09-04'
+method: searched
+source: https://www.vytalizehealth.com/
+limit_count: 0
+rate_limits: []
+headers: []
+note: >-
+  No rate limits are published because no API reference is published. Vytalize Health operates no
+  public developer portal, no documentation host and no API reference on any host it controls; the
+  only API surface discovered — prod-banzai-services.vytalizehealth.com, the backend the partner
+  portal SPA calls — is unreachable from the public internet, so no live response headers could be
+  observed either. Recorded as an honest zero, not an omission.
+evidence:
+- url: https://www.vytalizehealth.com/
+  status: 200
+  note: marketing site; no developer or API section in the page sitemap
+- url: https://prod-banzai-services.vytalizehealth.com/
+  status: 0
+  note: TCP 443 connection timeout from the public internet

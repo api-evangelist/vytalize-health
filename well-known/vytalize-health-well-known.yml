@@ -1,0 +1,142 @@
+generated: '2026-09-04'
+method: probed
+source: live HTTPS probes of the named /.well-known/ path list against every host this record knows
+note: >-
+  No host Vytalize Health operates serves any document on the probed discovery surface. The apex and
+  www marketing hosts (WordPress behind Cloudflare) return a real 404 for every path. The partner
+  portal host app.vytalizehealth.com is a create-react-app single-page app whose router answers
+  HTTP 200 with the same 570-byte index.html shell for extensionless paths — those are soft-404s, not
+  documents, and are recorded as misses. The product API host named by the portal bundle
+  (prod-banzai-services.vytalizehealth.com, an AWS ELB) could not be probed at all: TCP connections to
+  port 443 time out from the public internet on every published A record, so its discovery surface is
+  unmeasurable rather than absent. NO WellKnown or SecurityTxt pointer is emitted for this record.
+hit_count: 0
+soft_404_control:
+  host: https://app.vytalizehealth.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  bytes: 570
+  verdict: SPA catch-all shell, identical to the site index — not a document
+path_echo_control: passed
+hosts:
+- host: https://www.vytalizehealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/api-catalog.json
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/ucp.json
+    status: 404
+  - path: /.well-known/acp.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/vytalize-health-negative-control-7f3ab91c.json
+    status: 404
+- host: https://vytalizehealth.com
+  note: redirects to www.vytalizehealth.com; same origin behaviour
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/vytalize-health-negative-control-7f3ab91c.json
+    status: 429
+    note: Cloudflare "Just a moment" interstitial after repeated probing, not a served document
+- host: https://app.vytalizehealth.com
+  note: >-
+    Partner portal SPA. Extensionless paths return the 570-byte index.html shell with HTTP 200;
+    every such row is recorded as a soft-404 miss, not a document.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    soft_404: true
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    soft_404: true
+  - path: /.well-known/api-catalog
+    status: 200
+    soft_404: true
+  - path: /.well-known/api-catalog.json
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/ucp.json
+    status: 404
+  - path: /.well-known/acp.json
+    status: 404
+  - path: /.well-known/aauth-resource.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+  - path: /apis.json
+    status: 404
+  - path: /apis.yml
+    status: 200
+    soft_404: true
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/vytalize-health-negative-control-7f3ab91c.json
+    status: 404
+- host: https://prod-banzai-services.vytalizehealth.com
+  note: >-
+    Product API host, discovered in the portal's main.2d65df30.js bundle. Resolves via CNAME to
+    banzai-backend-services-lb-1844296651.us-east-1.elb.amazonaws.com; TCP 443 times out from the
+    public internet on 3.220.16.22, 34.229.8.19 and 52.0.57.178, so no path could be probed.
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+    note: connection timeout
+  - path: /.well-known/openid-configuration
+    status: 0
+    note: connection timeout
+  - path: /.well-known/oauth-protected-resource
+    status: 0
+    note: connection timeout
+  - path: /.well-known/agent-card.json
+    status: 0
+    note: connection timeout

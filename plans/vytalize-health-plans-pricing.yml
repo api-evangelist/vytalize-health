@@ -1,0 +1,21 @@
+generated: '2026-09-04'
+method: searched
+source: https://www.vytalizehealth.com/our-solution/
+plan_count: 0
+plans: []
+note: >-
+  Vytalize Health publishes no plans, tiers or price list of any kind. It is not a subscription
+  software vendor: the commercial model is a Medicare shared-savings arrangement in which partner
+  primary care practices join the ACO and share in the savings generated against a CMS benchmark,
+  described on the solution page as "bold financial incentives" rather than as a priced product. The
+  only public commercial call-to-action is an NPI-based savings estimator
+  (https://www.vytalizehealth.com/get-your-npi-estimate/, HTTP 200) and a contact form
+  (https://www.vytalizehealth.com/contact-us/, HTTP 200). There is no self-serve signup, no pricing
+  page and therefore no API plan surface to record.
+evidence:
+- url: https://www.vytalizehealth.com/our-solution/
+  status: 200
+- url: https://www.vytalizehealth.com/get-your-npi-estimate/
+  status: 200
+- url: https://www.vytalizehealth.com/contact-us/
+  status: 200

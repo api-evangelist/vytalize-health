@@ -64,5 +64,43 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Vytalize Health is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/vytalize-health_stock/
+Vytalize Health is a Medicare Accountable Care Organization (ACO) and value-based care company based
+in Hoboken, New Jersey. It partners with independent primary care practices, group practices,
+community health centers and existing ACOs, pairing shared-savings economics with a technology and
+clinical services stack: **Vytal Insights** (clinical decision support built on claims, clinical
+notes, hospital ADT feeds and social determinants data), **Vytal Care** (remote and in-home care
+programs) and **Vytal Network** (specialist and hospital network management).
+
+## API surface
+
+**Vytalize Health publishes no public API.** Contract discovery was run in full on 2026-09-04 and
+found nothing to catalog:
+
+- No developer portal, documentation host or API reference. The site's own `page-sitemap.xml` lists
+  24 pages and none of them is developer-facing; `developer.`, `developers.`, `docs.`, `api.`,
+  `portal.` and `status.` subdomains do not resolve.
+- No OpenAPI, Swagger, GraphQL SDL, AsyncAPI, WSDL, protobuf or OGC contract on any host.
+- No `llms.txt`, no `/apis.json`, no MCP server, no A2A agent card, and no document on any probed
+  `/.well-known/` path on any host — see `well-known/`.
+- No first-party SDK on npm, PyPI, RubyGems or Packagist. The public GitHub organization
+  [vytalizehealth](https://github.com/vytalizehealth) holds one repository, a fork of a third-party
+  PHP library.
+
+Two API-adjacent surfaces *do* exist and are recorded for what they are:
+
+1. **`prod-banzai-services.vytalizehealth.com`** — the product backend the partner portal calls,
+   discovered by reading the portal's own public JavaScript bundle. It is an AWS load balancer whose
+   port 443 times out from the public internet on every published address, so it is network-gated
+   rather than merely undocumented.
+2. **`www.vytalizehealth.com/wp-json/`** — the marketing site's WordPress REST API, open and serving
+   513 routes. It is content-management infrastructure, not a Vytalize product API, and is
+   deliberately **not** registered as an API in `apis.yml`.
+
+Artifacts in this repository therefore record measured absence — which registries were searched,
+which paths were probed, and what each returned — rather than a contract.
+
+## Source
+
+- Company site: https://www.vytalizehealth.com/
+- Partner portal: https://app.vytalizehealth.com/
+- Secondary-market listing that surfaced the company: https://forgeglobal.com/vytalize-health_stock/

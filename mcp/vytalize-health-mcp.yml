@@ -1,0 +1,32 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  vytalizehealth.com site + page sitemap, github.com/vytalizehealth, npm registry search,
+  and direct probes of app.vytalizehealth.com
+status: none
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+tools: []
+note: >-
+  Vytalize Health ships no MCP server, hosted or local. There is no /mcp endpoint on any host it
+  operates, no @vytalize or vytalize package on npm, no MCP mention anywhere in the site's page
+  sitemap, and the single public repository in its GitHub organization is an unrelated third-party
+  PHP fork. No candidate tool list could be derived either: the company publishes no OpenAPI,
+  GraphQL SDL or any other machine-readable contract to derive tools from, and the one API host it
+  runs (prod-banzai-services.vytalizehealth.com) refuses public TCP connections. NO MCPServer
+  pointer is emitted for this record — a mode:none manifest is a record of the search, not a server.
+evidence:
+- url: https://www.vytalizehealth.com/page-sitemap.xml
+  status: 200
+  note: 24 pages, none developer- or MCP-related
+- url: https://api.github.com/orgs/vytalizehealth/repos
+  status: 200
+  note: 1 public repo (libmergepdf fork)
+- url: https://registry.npmjs.org/-/v1/search?text=vytalize
+  status: 200
+  note: 0 packages

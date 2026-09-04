@@ -1,17 +1,36 @@
 aid: vytalize-health
 name: Vytalize Health
-description: 'Vytalize Health is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Vytalize Health is a Hoboken, New Jersey based value-based care company that operates as a Medicare
+  Accountable Care Organization (ACO), partnering with independent primary care practices, group
+  practices, community health centers and existing ACOs to move them into risk-bearing Medicare
+  programs. The company pairs shared-savings economics with a technology and clinical services stack:
+  Vytal Insights, a physician-built clinical decision support product that analyzes claims data,
+  clinical notes, hospital admission-discharge-transfer feeds and social determinants of health to
+  surface point-of-care recommendations; Vytal Care, a suite of remote and in-home programs
+  (transitions of care, chronic disease management, home health review) delivered by an
+  interdisciplinary team of RN care managers, health coaches, pharmacists and licensed clinical social
+  workers; and Vytal Network, its specialist, hospital and ancillary provider network layer. Vytalize
+  supports tens of thousands of Medicare beneficiaries across multiple states. Its software reaches
+  practice partners through an authenticated web portal at app.vytalizehealth.com rather than through
+  a public developer platform.
+image: https://www.vytalizehealth.com/wp-content/uploads/2018/10/vytalizelogofooter.png
 url: https://raw.githubusercontent.com/api-evangelist/vytalize-health/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-09-04'
 modified: '2026-09-04'
 tags:
 - Company
+- Healthcare
+- Value Based Care
+- Accountable Care Organization
+- Medicare
+- Population Health
+- Clinical Decision Support
+- Care Management
+- Health Data
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +38,52 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/vytalize-health-domain-security.yml
 - type: Website
-  url: https://forgeglobal.com/vytalize-health_stock/
+  url: https://www.vytalizehealth.com/
+- type: Login
+  url: https://app.vytalizehealth.com/
+- type: Support
+  url: https://www.vytalizehealth.com/contact-us/
+- type: Blog
+  url: https://www.vytalizehealth.com/resources/
+- type: PrivacyPolicy
+  url: https://www.vytalizehealth.com/privacy-policy/
+- type: GitHubOrganization
+  url: https://github.com/vytalizehealth
+- type: LLMsTxt
+  url: llms/vytalize-health-llms.txt
+- type: Plans
+  url: plans/vytalize-health-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/vytalize-health-rate-limits.yml
+x-enrichment:
+  date: '2026-09-04'
+  status: minimal
+  artifacts_added: 8
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: no-developer-program
+  detail: >-
+    Vytalize Health ships software only to signed-on practice partners through an Entra ID login at
+    app.vytalizehealth.com; the product backend that portal calls
+    (prod-banzai-services.vytalizehealth.com, an AWS ELB) drops public TCP connections on 443 on every
+    published address, and the company's only openly reachable machine-readable API is the marketing
+    site's WordPress REST index at www.vytalizehealth.com/wp-json/, which is CMS infrastructure and
+    not a Vytalize product.
+  evidence:
+  - url: https://prod-banzai-services.vytalizehealth.com/
+    status: 0
+  - url: https://www.vytalizehealth.com/page-sitemap.xml
+    status: 200
+  - url: https://www.vytalizehealth.com/.well-known/api-catalog
+    status: 404
+  - url: https://www.vytalizehealth.com/openapi.json
+    status: 404
+  - url: https://app.vytalizehealth.com/.well-known/agent-card.json
+    status: 404
+  - url: https://www.vytalizehealth.com/wp-json/
+    status: 200
+  checked: '2026-09-04'

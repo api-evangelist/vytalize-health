@@ -1,0 +1,30 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  registry searches of npm, PyPI, RubyGems, Packagist plus the GitHub organization
+  github.com/vytalizehealth and the vytalizehealth.com site
+package_count: 0
+packages: []
+note: >-
+  No first-party client library exists in any public registry. npm search "vytalize" returns zero
+  packages, pypi.org/pypi/vytalize/json returns 404, the RubyGems and Packagist search APIs return
+  empty result sets. The company's GitHub organization (github.com/vytalizehealth, created
+  2021-03-17) is public but holds exactly one public repository — libmergepdf, a fork of a
+  third-party PHP PDF-merging library last pushed 2022-12-27 — which is not a client library for any
+  Vytalize product. No SDKs pointer is emitted; there is no SDK to point at.
+searched_registries:
+- registry: npm
+  query: https://registry.npmjs.org/-/v1/search?text=vytalize
+  result: 0 packages
+- registry: pypi
+  query: https://pypi.org/pypi/vytalize/json
+  result: HTTP 404
+- registry: rubygems
+  query: https://rubygems.org/api/v1/search.json?query=vytalize
+  result: empty array
+- registry: packagist
+  query: https://packagist.org/search.json?q=vytalize
+  result: 0 results
+- registry: github
+  query: https://api.github.com/orgs/vytalizehealth/repos
+  result: 1 public repo (third-party fork, not an SDK)
